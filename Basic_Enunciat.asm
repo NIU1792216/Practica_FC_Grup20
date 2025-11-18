@@ -178,7 +178,7 @@ showCursor:
    push rbx
    mov eax,dword[row]
    shl eax,1
-   add eax,9
+   add eax,10
    mov dword[rowScreen],eax
    mov ebx,dword[col]
    mov eax,9
@@ -403,49 +403,47 @@ shiftNumbers:
    push rbp
    mov  rbp, rsp
    push rsi
-   push rbx
    push rax
+   push rbx
    push rcx
    
    mov rsi,30
 
 b_mat_inv_fn:
-   mov bl,0
-   cmp esi,0
-   jl fi_sftNbr
-   call mat_inv
-   jmp nz_shift
+   mov rbx,0
+   cmp rsi,0
+   jle fi_shft_Nbr
 
-mat_inv:
-   cmp bl,4
-   jge b_mat_inv
+mat_inv_nz:
+   cmp rbx,4
+   jge b_mat_inv_fn
    cmp word[m+rsi],0
-   jle z_shift
+   je mat_inv_z
    sub rsi,2
-   add bl,1
-   jmp mat_inv
+   add rbx,1
+   jmp mat_inv_nz
    
-z_shift:
-   mov cl,rsi
+mat_inv_z:
+   mov rcx,rsi
+b_shft_z
    sub rsi,2
-   add bl,1
-b_sft_zero:
-   cmp bl,4
-   jge b_mat_inv
+   add rbx,1
+   cmp rbx,4
+   jge b_mat_inv_fn
    cmp word[m+rsi],0
-   jle b_sft_zero
+   je b_shft_z
    mov ax, word[m+rsi]
-   mov word[m+cl],ax
-   mov rsi,cl
-   jmp b_sft_zero
+   mov word[m+rsi],0
+   mov word[m+rcx],ax
+   shl rbx,1
+   add rsi,rbx
+   mov rbx,0
+   jmp mat_inv_nz
    
-   
-   
-
-fi_sftNbr:
+fi_shft_Nbr:
    pop rcx
-   pop rax
    pop rbx
+   pop rax
    pop rsi
    mov rsp, rbp
    pop rbp

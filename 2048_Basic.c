@@ -223,7 +223,7 @@ void printMenu_C(){
 
     charac=' ';
     while (charac < '0' || charac > '9') {
-      rowScreen = 20;
+      rowScreen = 21;
       colScreen = 22;
       gotoxy_C();
       getch_C();
@@ -278,7 +278,7 @@ void printBoard_C(){
 
 void printMessage_C() {
 
-   rowScreen = 22;
+   rowScreen = 23;
    colScreen = 12;
    gotoxy_C();
 
@@ -325,7 +325,7 @@ int main(void){
 
 			getch_C();
 			
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -345,7 +345,7 @@ int main(void){
 
             showNumber(); 
 
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -358,7 +358,7 @@ int main(void){
 
             showMatrix(); 
             
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -372,7 +372,7 @@ int main(void){
             copyMatrix();
 
             showMatrix();
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -390,7 +390,7 @@ int main(void){
  
             showMatrix();
             
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -407,7 +407,7 @@ int main(void){
 
             showMatrix();
             
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -422,7 +422,7 @@ int main(void){
 
 
 
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -434,7 +434,7 @@ int main(void){
             clearScreen_C();  
             printBoard_C(); 
 
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
@@ -447,7 +447,7 @@ int main(void){
 
 
             printMessage_C();
-            rowScreen = 17;
+            rowScreen = 18;
             colScreen = 30;
             gotoxy_C();
             printf(" Press any key ");
