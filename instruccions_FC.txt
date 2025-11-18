@@ -1,0 +1,10 @@
+	Ensamblar (dona un objecte)
+yasm -f elf64 -g dwarf2 -o [fitxer destí].o [fitxer origen].asm
+Genera un fitxer en codi objecte (.o) a partir d'un fitxer en codi font (assemblador)
+	
+	Compilar (dona un executable)
+gcc -no-pie -mincoming-stack-boundary=3 -g -o [fitxer].out [fitxer].o [fitxer].c
+	
+	Compilar programa en C
+gcc -g -o [nom executable] [nom arxiu].c
+Genera un fitxer executable (.out)
