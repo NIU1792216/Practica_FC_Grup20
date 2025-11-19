@@ -16,4 +16,6 @@ then
 	echo "============================"
 else
 	./executable
+	rm codi_objecte.o executable
+	rm aux***********
 fi

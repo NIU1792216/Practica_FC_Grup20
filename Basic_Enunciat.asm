@@ -178,7 +178,7 @@ showCursor:
    push rbx
    mov eax,dword[row]
    shl eax,1
-   add eax,10
+   add eax,9
    mov dword[rowScreen],eax
    mov ebx,dword[col]
    mov eax,9
@@ -425,7 +425,7 @@ mat_inv_nz:
    
 mat_inv_z:
    mov rcx,rsi
-b_shft_z
+b_shft_z:
    sub rsi,2
    add rbx,1
    cmp rbx,4
@@ -435,6 +435,7 @@ b_shft_z
    mov ax, word[m+rsi]
    mov word[m+rsi],0
    mov word[m+rcx],ax
+   mov byte[state],2
    shl rbx,1
    add rsi,rbx
    mov rbx,0
@@ -470,11 +471,34 @@ fi_shft_Nbr:
 addPairs:
    push rbp
    mov  rbp, rsp
+   push rsi
+   push rax
+   push rbx
+   mov rsi,30
+   
+b_addPairs_fn:
+   cmp rsi,0
+   jle fi_addPairs
+   mov bl,0
+   mov ax,0
+b_addPairs:
+   cmp bl,4
+   jge b_addPairs_fn
+   mov ax,word[m+esi]
+   sub rsi,2
+   add bl,1
+   cmp ax,word[m+rsi]
+   jne b_addPairs
+   add rsi,2
+   shl word[m+rsi],1
+   sub rsi,2
+   mov word[m+rsi],0
+   jmp b_addPairs
 
-
-
-
-
+fi_addPairs:
+   pop rbx
+   pop rax
+   pop rsi
    mov rsp, rbp
    pop rbp
    ret
