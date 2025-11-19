@@ -178,7 +178,7 @@ showCursor:
    push rbx
    mov eax,dword[row]
    shl eax,1
-   add eax,9
+   add eax,10
    mov dword[rowScreen],eax
    mov ebx,dword[col]
    mov eax,9
@@ -480,7 +480,7 @@ b_addPairs_fn:
    cmp rsi,0
    jle fi_addPairs
    mov bl,0
-   mov ax,0
+   mov ax,3
 b_addPairs:
    cmp bl,4
    jge b_addPairs_fn
